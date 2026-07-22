@@ -1,12 +1,15 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
+from typing import Optional
 
 
 class Recruiter(BaseModel):
-
     full_name: str
-
-    email: str
+    email: EmailStr
+    password: str
 
     company_name: str
+    designation: str
 
-    password: str
+    phone: Optional[str] = None
+
+    role: str = "recruiter"

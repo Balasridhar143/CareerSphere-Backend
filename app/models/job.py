@@ -1,19 +1,15 @@
 from pydantic import BaseModel
-from typing import List
+from typing import Optional, List
+from datetime import datetime
 
 
 class Job(BaseModel):
-
     title: str
-
-    company: str
-
+    company_name: str
     location: str
-
-    salary: str
-
+    salary: Optional[str] = None
+    experience: Optional[str] = None
+    job_type: str
     skills: List[str]
-
     description: str
-
-    deadline: str
+    created_at: datetime = datetime.utcnow()

@@ -1,5 +1,5 @@
-from pydantic import BaseModel, EmailStr
-from typing import Optional
+from pydantic import BaseModel, EmailStr, Field
+from typing import List, Optional
 from datetime import datetime
 
 
@@ -11,7 +11,7 @@ class User(BaseModel):
 
     password: str
 
-    role: str
+    role: str = "student"
 
     college: Optional[str] = None
 
@@ -19,4 +19,26 @@ class User(BaseModel):
 
     cgpa: Optional[float] = None
 
-    created_at: datetime = datetime.utcnow()
+    skills: List[str] = []
+
+    certifications: List[str] = []
+
+    projects: List[str] = []
+
+    resume_url: Optional[str] = None
+
+    profile_picture: Optional[str] = None
+
+    resume_score: int = 0
+
+    ai_score: int = 0
+
+    saved_jobs: List[str] = []
+
+    applied_jobs: List[str] = []
+
+    notifications: List[str] = []
+
+    is_active: bool = True
+
+    created_at: datetime = Field(default_factory=datetime.utcnow)

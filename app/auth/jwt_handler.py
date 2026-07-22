@@ -1,5 +1,5 @@
-from jose import jwt
 from datetime import datetime, timedelta
+from jose import jwt
 
 from app.config.settings import settings
 
@@ -12,7 +12,11 @@ def create_access_token(data: dict):
         minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
     )
 
-    payload.update({"exp": expire})
+    payload.update(
+        {
+            "exp": expire
+        }
+    )
 
     token = jwt.encode(
         payload,
